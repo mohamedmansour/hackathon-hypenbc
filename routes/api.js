@@ -9,6 +9,9 @@ db.auth(function(error) {
     }
     else {
         console.log("connected to bluemix object storage");
+       //API: 
+       //db.upload({conatiner: 'img', remote: 'FLENAME'});
+       //db.download({container: 'img', remote: 'FILENAME'}); 
     }
 });
 
