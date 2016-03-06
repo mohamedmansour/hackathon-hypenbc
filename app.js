@@ -9,7 +9,8 @@ var socket_io = require('socket.io');
 var routes = require('./routes/index');
 var partials = require('./routes/partials');
 
-var api = require('./routes/api');
+var mdb = require('./db/mongo');
+
 var app = express();
 
 var io = socket_io();
