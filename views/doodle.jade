@@ -18,8 +18,8 @@ input#text
 #brushes
     button#save(ng-click="submit()")
       span Save Image
-    #small.brush(ng-click="brushBtn(small)")
-    #medium.brush(ng-click="brushBtn(medium)")
-    #large.brush(ng-click="brushBtn(large)")
+    #small.brush(ng-click="brushBtn(10)", ng-class="{'selected-brush': brushCurrent == 10}")
+    #medium.brush(ng-click="brushBtn(15)", ng-class="{'selected-brush': brushCurrent == 15}")
+    #large.brush(ng-click="brushBtn(25)", ng-class="{'selected-brush': brushCurrent == 25}")
     #text-btn(ng-click="textBtn()")
         img(src="../../images/textcursor.svg")    

@@ -6,8 +6,12 @@ App.controller('DoodleController', ['$scope', '$window', '$http', function($scop
         currY = 0,
         dot_flag = false;
 
-    var x = "black",
-        y;
+    var x = "#FF073B";
+
+    $scope.brushCurrent = 10;
+    $scope.brushBtn = function(val){
+        $scope.brushCurrent = val;
+    }
 
     function init() {
         canvas = can;
@@ -78,7 +82,7 @@ App.controller('DoodleController', ['$scope', '$window', '$http', function($scop
         ctx.lineTo(currX, currY);
         ctx.strokeStyle = x;
         ctx.lineCap = 'round';
-        ctx.lineWidth = y;
+        ctx.lineWidth = $scope.brushCurrent;
         ctx.stroke();
         ctx.closePath();
 
@@ -169,24 +173,6 @@ App.controller('DoodleController', ['$scope', '$window', '$http', function($scop
             }
         })
     }
-
-
-    var small = document.getElementById('small');
-    var medium = document.getElementById('medium');
-    var large = document.getElementById('large');
-
-    small.addEventListener('click', function(e){
-        e.preventDefault();
-        y = 2;
-    });
-    medium.addEventListener('click', function(e){
-        e.preventDefault();
-        y = 8;
-    });
-    large.addEventListener('click', function(e){
-        e.preventDefault();
-        y = 16;
-    });
 
     function resizeCanvas(){
         init();

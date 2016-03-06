@@ -8,19 +8,19 @@
 }
 
 #red {
-    background: #D90000;
+    background: #FF073B;
     height: 100%;
     width: 16.66%;
     display: inline-block;
 }
 #green {
-    background: #04756F;
+    background: #C2C113;
     height: 100%;
     width: 16.66%;
     display: inline-block;
 }
 #yellow {
-    background: #FFD500;
+    background: #FE8600;
     height: 100%;
     width: 16.66%;
     display: inline-block;
@@ -32,13 +32,13 @@
     display: inline-block;
 }
 #blue {
-    background: #007CFF;
+    background: #573EFF;
     height: 100%;
     width: 16.66%;
     display: inline-block;
 }
 #purple {
-    background: #5C0C51;
+    background: #B807FA;
     height: 100%;
     width: 16.66%;
     display: inline-block;
@@ -54,37 +54,35 @@
 }
 
 #small {
-    position: fixed;
-    background: #dcdcdc;
-    border: 2px solid #fff;
     width: 10px;
     height: 10px;
     left: 30%;
-    border-radius: 50%;
-    bottom: 10px;
 }
 
 #medium {
-    position: fixed;
-    background: #dcdcdc;
-    border: 2px solid #fff;
     width: 15px;
     height: 15px;
     left: 35%;
+}
+
+#large {
+    width: 25px;
+    height: 25px;
+    left: 40%;
+}
+
+.brush {
+    position: fixed;
+    background: #dcdcdc;
+    border: 2px solid #fff;
     border-radius: 50%;
     bottom: 10px;
 }
 
-#large {
-    position: fixed;
-    background: #dcdcdc;
-    border: 2px solid #fff;
-    width: 25px;
-    height: 25px;
-    left: 40%;
-    border-radius: 50%;
-    bottom: 10px;
+.selected-brush {
+    background: white;
 }
+
 #can {
     top: 125px;
     left: 0;
@@ -139,4 +137,14 @@
 canvas {
     user-select: none;
    -webkit-user-select: none;
+}
+
+#save {
+    line-height: 3;
+    background: #AD07FA;
+    border: none;
+    border-radius: 3px;
+    color: white;
+    margin-top: 5px;
+    margin-left: 5px;
 }
