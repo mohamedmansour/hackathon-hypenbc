@@ -7,6 +7,8 @@ canvas.setAttribute('height', video.clientHeight.toString());
 image.setAttribute('width', video.clientWidth.toString());
 image.setAttribute('height', video.clientHeight.toString());
 
+var videoTitle = document.querySelector('#video source').getAttribute('src').split('.')[0].replace('/','');
+
 var context = canvas.getContext('2d');
 
 // connect to the socket
@@ -37,5 +39,10 @@ var capture_screen = function() {
   var imageBase64Data = canvas.toDataURL('image/jpeg', 0.5);
   image.setAttribute('src', imageBase64Data);
   
-  return { image: imageBase64Data.substring(23), videoDuration: videoDuration, videoElapsed: videoElapsed }
+  return { 
+    image: imageBase64Data.substring(23), 
+    videoDuration: videoDuration, 
+    videoElapsed: videoElapsed, 
+    videoTitle: videoTitle
+  };
 }

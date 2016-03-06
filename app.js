@@ -9,24 +9,15 @@ var socket_io = require('socket.io');
 var routes = require('./routes/index');
 var partials = require('./routes/partials');
 
-var mdb = require('./db/mongo');
+var mongoose = require('./db/mongo');
+var Hype = require('./db/hype')(mongoose);
 
 var app = express();
 
 var io = socket_io();
 app.io = io;
 
-// socket.io events
-io.on('connection', function(socket)
-{
-    console.log('A user connected to socket: ' + socket);
-    socket.on('captureResponse', function(data) {
-      console.log("Got captureResponse:");
-      console.log(data);
-    });
-});
-
-var api = require('./routes/api')(io);
+var api = require('./routes/api')(io, Hype);
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));

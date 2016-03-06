@@ -1,6 +1,8 @@
 var express = require('express');
 var router = express.Router();
 var db = require('../db/bluemixdb.js');
+var stream = require('stream');
+var blobImageContainerName = 'img';
     
 // Authenticate to OpenStack
 db.auth(function(error) {
@@ -17,7 +19,54 @@ db.auth(function(error) {
     }
 });
 
-module.exports = function(io) { 
+module.exports = function(io, Hype) { 
+  io.on('connection', function(socket) {
+    console.log('A user connected to socket: ' + socket);
+    
+    socket.on('captureResponse', function(data) {
+      console.log("Got captureResponse:");
+      console.log(data);
+      
+      var userId = 1;
+      var timestamp = Date.now();
+      var hypeType = "Angry";
+      var newFileName = "user_" + userId + 
+                        "__vid_" + data.videoTitle + 
+                        "__elapsd_" + data.videoElapsed.toString().replace('.','_') + 
+                        "__hype_" + hypeType + 
+                        ".png";
+      
+      console.log("New file name for image: " + newFileName);
+      
+      console.log("Attempting to upload image to blob storage");
+      var writeStream = db.upload({
+        container: blobImageContainerName,
+        remote: newFileName
+      });
+      var readStream = new stream.Readable();
+      readStream._read = function noop() {};
+      readStream.push(new Buffer(data.image, 'base64'));
+      readStream.push(null);
+      
+      readStream.pipe(writeStream);
+      console.log("Done uploading image to blob storage");
+      
+      console.log("Creating new Hype entry");
+      new Hype({
+        UserId: userId,
+        TimeCreated: timestamp,
+        HypeType: hypeType,
+        HypeStorageContainer: blobImageContainerName,
+        HypeFileName: newFileName,
+        HypePositionMilliseconds: data.videoElapsed,
+        TotalVideoDuration: data.videoDuration
+      }).save(function (err, testHype) {
+        if (err) return console.error(err);
+      });
+      console.log("Saved new Hype entry to db");
+    });
+  });
+  
   router.get('/videos', function(req, res, next) {
     res.send([
         {

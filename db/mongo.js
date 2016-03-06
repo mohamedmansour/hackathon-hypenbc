@@ -37,31 +37,4 @@ mongodb.on('disconnected', function() {
 console.log('dbURI is: '+dbURI);
 mongoose.connect(dbURI, {server:{auto_reconnect:true}});
 
-var kittySchema = mongoose.Schema({
-    name: String
-});
-kittySchema.methods.speak = function () {
-  var greeting = this.name
-    ? "Meow name is " + this.name
-    : "I don't have a name";
-  console.log(greeting);
-}
-var Kitten = mongoose.model('Kitten', kittySchema);
-var silence = new Kitten({ name: 'Silence' });
-var fluffy = new Kitten({ name: 'fluffy' });
-console.log(silence.name); // 'Silence'
-silence.save(function (err, silence) {
-  if (err) return console.error(err);
-  silence.speak();
-});
-fluffy.save(function (err, fluffy) {
-  if (err) return console.error(err);
-  fluffy.speak();
-});
-
-Kitten.find(function (err, kittens) {
-  if (err) return console.error(err);
-  console.log(kittens);
-})
-
-module.exports = mongodb;
+module.exports = mongoose;
