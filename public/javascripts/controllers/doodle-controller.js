@@ -1,4 +1,4 @@
-App.controller('DoodleController', ['$scope', '$window',  function($scope, $window) {
+App.controller('DoodleController', ['$scope', '$window', '$http', function($scope, $window, $http) {
     var canvas, ctx, flag = false,
         prevX = 0,
         currX = 0,
@@ -39,9 +39,25 @@ App.controller('DoodleController', ['$scope', '$window',  function($scope, $wind
     }
 
     init();
+    
     $scope.color = function(obj) {
         x=obj;
     }
+    
+    $scope.submit = function() {
+      console.log("Posting image to api/meme");
+      var imageBase64Data = canvas.toDataURL('image/jpeg', 0.5);
+      
+      var memePost = {memeString: imageBase64Data.substring(23), videoTitle: "warcraft"};
+      console.log("Posting meme:");
+      console.log(memePost);
+      
+      $http.post('/api/meme', memePost).success(function(data) {
+         console.log('Succesfully posted meme. response: ', data);
+         window.location = data.imgUrl;
+      });
+      
+    };
 
     function draw() {
         ctx.beginPath();
@@ -157,8 +173,6 @@ App.controller('DoodleController', ['$scope', '$window',  function($scope, $wind
         e.preventDefault();
         y = 16;
     });
-
-
 
     function resizeCanvas(){
         init();

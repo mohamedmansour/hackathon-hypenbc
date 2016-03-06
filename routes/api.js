@@ -79,6 +79,18 @@ module.exports = function(io, models) {
     });
   });
   
+  router.get('/meme', function(req, res, next){
+    models.Memes.find(function(err, memes) {
+      res.send(memes);
+    });
+  });
+  
+  router.get('/meme/:id', function(req, res, next){
+    models.Memes.find({_id: req.params.id}, function(err, meme){
+      res.send(meme);
+    });
+  });
+  
   router.post('/meme', function(req, res, next) {
     var memeString = req.body.memeString;
     var videoTitle = req.body.videoTitle;
@@ -107,7 +119,7 @@ module.exports = function(io, models) {
       console.log(video);
     });
     
-    res.send({success: true});
+    res.send({success: true, imgUrl: '/api/image/' + memeFileName});
   });
   
   router.get('/videos', function(req, res, next) {
@@ -169,7 +181,7 @@ module.exports = function(io, models) {
             return new Object({
               thumbnail: '/api/image/' + h.HypeFileName,
               timestamp: h.TimeCreated,
-              timemark: Math.floor(h.HypePositionSeconds / 60).toString() +  ":" + Math.floor(h.HypePositionSeconds - (h.HypePositionSeconds / 60)).toString()
+              timemark: Math.floor(h.HypePositionSeconds / 60).toString() +  ":" + Math.floor(h.HypePositionSeconds - Math.floor(h.HypePositionSeconds / 60) * 60).toString()
             })
           })
         });

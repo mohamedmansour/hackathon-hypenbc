@@ -16,10 +16,10 @@ input#text
     span x
 
 #brushes
+    button#save(ng-click="submit()")
+      span Save Image
     #small.brush(ng-click="brushBtn(small)")
     #medium.brush(ng-click="brushBtn(medium)")
     #large.brush(ng-click="brushBtn(large)")
     #text-btn(ng-click="textBtn()")
         img(src="../../images/textcursor.svg")    
-
-
