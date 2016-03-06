@@ -4,6 +4,7 @@ html(ng-app='hypeApp')
     title= Hype
     link(href='/favicon.ico', rel='icon', type='image/x-icon')
     link(rel='stylesheet', href='/stylesheets/style.css')
+    link(rel='stylesheet', href='/stylesheets/doodle.css')
   body
     #nav(scroll-collapse, ng-class="{collapse:boolChangeClass}")
        #left-nav
@@ -18,3 +19,4 @@ html(ng-app='hypeApp')
     script(src='/javascripts/controllers/doodle-controller.js')
     script(src='/javascripts/directives/scroll-directive.js')
     script(src='/javascripts/directives/video-directive.js')
+    script(src='/javascripts/directives/doodle-directive.js')
