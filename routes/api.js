@@ -4,14 +4,25 @@ var router = express.Router();
 module.exports = function(io){  
   /* GET users listing. */
   router.get('/hype', function(req, res, next) {
+    var connectedClients = io.sockets.clients().connected;
+    console.log("Connected Clients:");
+    console.log(connectedClients);
     
-    console.log("Emitting captureRequest to all sockets...")
-    io.emit('captureRequest', 'hi!');
-    console.log("Emitted a captureRequest to all sockets.");
-
-    res.send({
-        status: true
-    });
+    if (Object.keys(connectedClients).length === 0){
+      console.log("No connected clients!");
+      res.send({
+        status: false,
+        message: "No clients are connected. Watch a show dummy!"
+      });
+    } else {
+      console.log("Emitting captureRequest to all sockets...");
+      io.emit('captureRequest');
+      console.log("Emitted a captureRequest to all sockets.");
+      res.send({
+        status: true,
+        message: "captureRequest sent to the client. Your capture image will be available soon!"
+      });
+    }
   });
   return router;
 }

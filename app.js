@@ -18,6 +18,10 @@ app.io = io;
 io.on('connection', function(socket)
 {
     console.log('A user connected to socket: ' + socket);
+    socket.on('captureResponse', function(data) {
+      console.log("Got captureResponse:");
+      console.log(data);
+    });
 });
 
 var api = require('./routes/api')(io);

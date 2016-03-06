@@ -10,11 +10,17 @@ image.setAttribute('height', video.clientHeight.toString());
 var context = canvas.getContext('2d');
 
 // connect to the socket
-var socket = io.connect();
+var socket = io.connect("http://localhost:3000");
 
 socket.on('captureRequest', function (data) {
-  console.log("Received a capture request with data: " + data);
-  socket.emit('captureResponse', capture_screen())
+  console.log("Received a capture request with data:");
+  console.log(data);
+  
+  var captureResponse = capture_screen();
+  socket.emit('captureResponse', captureResponse);
+  
+  console.log("Emitted captureResponse:");
+  console.log(captureResponse);
 });
 
 button.addEventListener('click', function(event){
