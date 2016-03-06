@@ -12,6 +12,10 @@ var App = angular.
                 templateUrl: 'partials/video.html',
                 controller: 'VideoController'
             }).
+            when('/doodle', {
+                templateUrl: 'partials/doodle.html',
+                controller: 'DoodleController'
+            }).
             otherwise({
                 redirectTo: '/videos'
             });
