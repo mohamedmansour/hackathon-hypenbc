@@ -10,7 +10,8 @@
     
 canvas#can(doodle-fullscreen) 
 
-input#text
+input#text.memeInput(ng-model="hiddenText")
+#hiddenInput.memeInput {{hiddenText}}
 
 #remove-btn
     span x

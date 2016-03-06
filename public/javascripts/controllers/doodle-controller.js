@@ -149,10 +149,6 @@ App.controller('DoodleController', ['$scope', '$window', '$http', '$location',
         text.style.visibility = 'visible';
         removeBtn.style.visibility = 'visible';
 
-
-        var xText = (canvas.width - text.width) / 2;
-        var yText = canvas.height - 100;
-        console.log(xText, yText);
         removeBtn.addEventListener('click', function(e){
             e.preventDefault();
             text.style.visibility = 'hidden';
@@ -162,6 +158,10 @@ App.controller('DoodleController', ['$scope', '$window', '$http', '$location',
 
         document.addEventListener('keypress', function(e){
             if (e.keyCode === 13){
+                var xText = (canvas.width - hiddenInput.offsetWidth) / 2;
+                var yText = canvas.height - 100;
+                console.log(xText, yText);
+                
                 var memeText = text.value;
                 ctx.font = '40pt Impact';
                 ctx.fillStyle = '#fff';

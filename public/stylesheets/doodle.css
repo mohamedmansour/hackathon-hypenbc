@@ -105,21 +105,22 @@
 #text {
     position: fixed;
     bottom: 100px;
-    font-family: 'Impact';
-    color: #fff;
     left: 10%;
     right: 10%;
     width: 80%;
-    text-transform: uppercase;
-    text-shadow: 2px 2px 0px #000;
-    -webkit-text-stroke: 1px black;
+    color: #fff;
     background:transparent;
     visibility:hidden;
     text-align:center;
+}
+.memeInput {
     line-height:1;
+    font-family: 'Impact';
+    text-transform: uppercase;
+    text-shadow: 2px 2px 0px #000;
+    -webkit-text-stroke: 1px black;
     font-size:48px;
 }
-
 #remove-btn {
     position:absolute;
     bottom:23.5%;
@@ -147,4 +148,8 @@ canvas {
     color: white;
     margin-top: 5px;
     margin-left: 5px;
+}
+
+#hiddenInput {
+    display: inline;
 }
