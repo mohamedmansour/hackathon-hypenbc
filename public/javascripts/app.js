@@ -16,6 +16,14 @@ var App = angular.
                 templateUrl: 'partials/doodle.html',
                 controller: 'DoodleController'
             }).
+            when('/memes', {
+                templateUrl: 'partials/meme-list.html',
+                controller: 'MemeListController'
+            }).
+            when('/memes/:id', {
+                templateUrl: 'partials/meme.html',
+                controller: 'MemeController'
+            }).
             otherwise({
                 redirectTo: '/videos'
             });

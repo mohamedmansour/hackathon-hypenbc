@@ -13,4 +13,12 @@ router.get('/doodle.html', function(req, res, next) {
     res.render('doodle');
 });
 
+router.get('/meme.html', function(req, res, next) {
+    res.render('meme');
+});
+
+router.get('/meme-list.html', function(req, res, next) {
+    res.render('meme-list');
+});
+
 module.exports = router;
