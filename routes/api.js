@@ -111,7 +111,8 @@ module.exports = function(io, models) {
   });
   
   router.get('/videos', function(req, res, next) {
-    if (!process.env.NODE_ENV) {        
+    if (!process.env.NODE_ENV) {     
+       console.log("Using mock video data...");   
        res.send([{
            title: 'Mr Robot (2015)',
            subtitle: 'Season 1, Episode 5',

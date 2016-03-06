@@ -37,7 +37,8 @@ mongodb.on('disconnected', function() {
 console.log('dbURI is: '+dbURI);
 
 if (process.env.NODE_ENV != 'dev') {
-    mongoose.connect(dbURI, {server:{auto_reconnect:true}});
+  console.log("Connecting to MongoDB");
+  mongoose.connect(dbURI, {server:{auto_reconnect:true}});
 }
 
 module.exports = mongoose;
