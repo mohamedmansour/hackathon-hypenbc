@@ -1,10 +1,16 @@
 doctype html
-html(ng-app="hypeApp")
+html(ng-app='hypeApp')
   head
     title= title
-    link(href="/favicon.ico", rel="icon", type="image/x-icon")
+    link(href='/favicon.ico', rel='icon', type='image/x-icon')
     link(rel='stylesheet', href='/stylesheets/style.css')
   body
+    #nav
+       #left-nav
+         img#menu(src='/images/menu.png')
+         span#title My TV
+       #right-nav
+         img#search(src='/images/search.png')
     block content
     script(src='https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.min.js')
     script(src='https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular-route.min.js')
