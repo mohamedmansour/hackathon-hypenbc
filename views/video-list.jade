@@ -18,7 +18,7 @@
                     .progress-line
                         .progress-item(ng-repeat="hype in video.hypes")
                 .container-frames-wrapper
-                    ul.container-frames
+                    ul.container-frames(style="width: {{ 270 * video.hypes.length}}px")
                         li(ng-repeat="hype in video.hypes")
                             .hype-image(style='background-image:url({{hype.thumbnail}})')
                             .hype-meta
