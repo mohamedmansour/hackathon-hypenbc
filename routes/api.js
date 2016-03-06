@@ -80,12 +80,18 @@ module.exports = function(io, models) {
   });
   
   router.get('/meme', function(req, res, next){
+    if (process.env.NODE_ENV == 'dev') {     
+      res.send([{"_id":"56dc278d91eff01d06d227c9","UserId":"1","VideoTitle":"warcraft","MemeUrl":"/api/image/meme__created_1457268621892__vid_warcraft.png","__v":0},{"_id":"56dc39e02958c6e00dbbc253","UserId":"1","VideoTitle":"warcraft","MemeUrl":"/api/image/meme__created_1457273312135__vid_warcraft.png","__v":0},{"_id":"56dc3a5574b5ba330e0f5e6b","UserId":"1","VideoTitle":"warcraft","MemeUrl":"/api/image/meme__created_1457273429310__vid_warcraft.png","__v":0},{"_id":"56dc3aac36c7595a0e5aebb8","UserId":"1","VideoTitle":"warcraft","MemeUrl":"/api/image/meme__created_1457273516089__vid_warcraft.png","__v":0},{"_id":"56dc3ae5a8d4c6830e38ebe1","UserId":"1","VideoTitle":"warcraft","MemeUrl":"/api/image/meme__created_1457273573519__vid_warcraft.png","__v":0},{"_id":"56dc3be2761eb9e40eb2cae8","UserId":"1","VideoTitle":"warcraft","MemeUrl":"/api/image/meme__created_1457273826786__vid_warcraft.png","__v":0},{"_id":"56dc3c93b42ca62a0f2f4aa2","UserId":"1","VideoTitle":"warcraft","MemeUrl":"/api/image/meme__created_1457274003448__vid_warcraft.png","__v":0},{"_id":"56dc3cd6a6dcec520fd5e564","UserId":"1","VideoTitle":"warcraft","MemeUrl":"/api/image/meme__created_1457274070338__vid_warcraft.png","__v":0}]);
+    }
     models.Memes.find(function(err, memes) {
       res.send(memes);
     });
   });
   
   router.get('/meme/:id', function(req, res, next){
+    if (process.env.NODE_ENV == 'dev') {
+      res.send({"_id":"56dc3cd6a6dcec520fd5e564","UserId":"1","VideoTitle":"warcraft","MemeUrl":"/api/image/meme__created_1457274070338__vid_warcraft.png","__v":0});
+    }
     models.Memes.find({_id: req.params.id}, function(err, meme){
       res.send(meme);
     });
@@ -123,7 +129,7 @@ module.exports = function(io, models) {
   });
   
   router.get('/videos', function(req, res, next) {
-    if (!process.env.NODE_ENV) {     
+    if (process.env.NODE_ENV == 'dev') {     
        console.log("Using mock video data...");   
        res.send([{
            title: 'Mr Robot (2015)',
