@@ -10,7 +10,9 @@ db.auth(function(error) {
     else {
         console.log("connected to bluemix object storage");
        //API: 
+       
        //db.upload({conatiner: 'img', remote: 'FLENAME'});
+       
        //db.download({container: 'img', remote: 'FILENAME'}); 
     }
 });
@@ -59,6 +61,11 @@ module.exports = function(io) {
             ]
         }
     ]);    
+  });
+  
+/* GET images from object storage. */
+  router.get('/image/:id', function(req, res, next) {
+      db.download({container: 'img', remote: req.params.id}).pipe(res);
   });
   
   /* GET users listing. */
