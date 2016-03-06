@@ -1,3 +1,18 @@
+App.directive('videoFullscreen', ['$window', function($window) {
+
+    function link(scope, element, attrs) {
+        var boxWidth = $window.innerWidth;
+        var boxHeight = $window.innerHeight;
+        var elt = element[0];
+        elt.width = boxWidth;
+        elt.height = boxHeight;
+     }
+     
+    return {
+        link: link
+    }
+}]);
+
 App.directive('videoTimeUpdate', [function() {
   function link(scope, element, attrs) {
     var elt = element[0];
@@ -39,3 +54,5 @@ App.directive('videoTimeUpdate', [function() {
       link: link
   }
 }]);
+
+

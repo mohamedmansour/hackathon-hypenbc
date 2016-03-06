@@ -131,18 +131,24 @@ body {
     font-size: 12px;
 }
 
-.container-frames-wrapper::-webkit-scrollbar
-{
+video {
+    z-index: -1000;
+    overflow: hidden;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: black;
+}
+
+.container-frames-wrapper::-webkit-scrollbar {
   width: 12px;  /* for vertical scrollbars */
   height: 6px; /* for horizontal scrollbars */
 }
 
-.container-frames-wrapper::-webkit-scrollbar-track
-{
+.container-frames-wrapper::-webkit-scrollbar-track {
   background: transparent;
 }
 
-.container-frames-wrapper::-webkit-scrollbar-thumb
-{
+.container-frames-wrapper::-webkit-scrollbar-thumb {
   background: transparent;
 }
