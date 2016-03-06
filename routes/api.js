@@ -79,31 +79,52 @@ module.exports = function(io, models) {
     });
   });
   
-// {
-//           title: 'Mr Robot (2015)',
-//           subtitle: 'Season 1, Episode 5',
-//           bannerImage: '/images/banners/warcraft.png',
-//           runtime: 3600,
-//           hypes: [
-//               {
-//                   thumbnail: '/images/frames/frame1.png',
-//                   timestamp: '1:20',
-//                   timemark: '1:20'
-//               },
-//               {
-//                   thumbnail: '/images/frames/frame2.png',
-//                   timestamp: '5:20',
-//                   timemark: '5:20'
-//               },
-//               {
-//                   thumbnail: '/images/frames/frame3.png',
-//                   timestamp: '10:20',
-//                   timemark: '10:20'
-//               }
-//           ]
-//       }
-  
   router.get('/videos', function(req, res, next) {
+    if (!process.env.NODE_ENV) {        
+       res.send([{
+           title: 'Mr Robot (2015)',
+           subtitle: 'Season 1, Episode 5',
+           bannerImage: '/images/banners/warcraft.png',
+           runtime: 3600,
+           hypes: [
+               {
+                   thumbnail: '/images/frames/frame1.png',
+                   timestamp: '1:20',
+                   timemark: '1:20'
+               },
+               {
+                   thumbnail: '/images/frames/frame2.png',
+                   timestamp: '5:20',
+                   timemark: '5:20'
+               },
+               {
+                   thumbnail: '/images/frames/frame3.png',
+                   timestamp: '10:20',
+                   timemark: '10:20'
+               }
+           ]
+       },
+       {
+           title: 'Warcraft (2016)',
+           bannerImage: '/images/banners/warcraft.png',
+           runtime: 3600,
+           hypes: [
+               {
+                   thumbnail: '/images/frames/frame1.png',
+                   timestamp: '1:20',
+                   timemark: '1:20'
+               },
+               {
+                   thumbnail: '/images/frames/frame3.png',
+                   timestamp: '10:20',
+                   timemark: '10:20'
+               }
+           ]
+       }]);
+
+        return;
+    }
+    
     models.Videos.find(function(err, vids) {
       res.send(vids.map(function(v){
         return new Object(
