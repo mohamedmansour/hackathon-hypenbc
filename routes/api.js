@@ -104,7 +104,7 @@ module.exports = function(io, models) {
 //       }
   
   router.get('/videos', function(req, res, next) {
-    models.Videos.find(function(err, vids) {
+    models.Videos.find({ Hypes: { $exists: true, $not: {$size: 0} } }, function(err, vids) {
       res.send(vids.map(function(v){
         return new Object(
         {
