@@ -1,8 +1,36 @@
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+}
+#nav {
+    height: 75px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-image: linear-gradient(rgba(0,0,0,0.5), transparent);
 }
 
-a {
-  color: #00B7FF;
+#left-nav {
+    float: left;
+    margin: 20px;
+}
+
+#right-nav {
+    float: right;
+    margin: 20px;
+}
+
+#title {
+    color: white;
+    font-size: 30px;
+    margin-left: 40px;
+}
+#banner {
+    height: 300px;
+    padding-top: 75px;
+    background-repeat: no-repeat;
+    background-position: top left;
+    background-size: cover;
 }
