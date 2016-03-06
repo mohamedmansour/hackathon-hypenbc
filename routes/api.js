@@ -131,7 +131,7 @@ module.exports = function(io, Hype) {
       });
     } else {
       console.log("Emitting captureRequest to all sockets...");
-      io.emit('captureRequest');
+      io.emit('captureRequest', req.query.type);
       console.log("Emitted a captureRequest to all sockets.");
       res.send({
         status: true,
