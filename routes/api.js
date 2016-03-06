@@ -79,6 +79,37 @@ module.exports = function(io, models) {
     });
   });
   
+  router.post('/meme', function(req, res, next) {
+    var memeString = req.body.memeString;
+    var videoTitle = req.body.videoTitle;
+    var memeFileName = "meme__created_" + Date.now() + "__" + "vid_" + videoTitle + ".png";
+    
+    console.log("Uploading new meme: " + memeFileName);
+    var writeStream = db.upload({
+      container: blobImageContainerName,
+      remote: memeFileName
+    });
+    var readStream = new stream.Readable();
+    readStream._read = function noop() {};
+    readStream.push(new Buffer(memeString, 'base64'));
+    readStream.push(null);
+      
+    readStream.pipe(writeStream);
+    
+    console.log('Finished uploading to object store');
+    
+    new models.Memes({
+      UserId: '1',
+      VideoTitle: videoTitle,
+      MemeUrl: '/api/image/' + memeFileName
+    }).save(function (err, video) {
+      if (err) return console.error(err);
+      console.log(video);
+    });
+    
+    res.send({success: true});
+  });
+  
   router.get('/videos', function(req, res, next) {
     if (!process.env.NODE_ENV) {        
        res.send([{

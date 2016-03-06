@@ -19,9 +19,16 @@ module.exports = function(mongoose) {
     Hypes: [HypesSchema]
   });
   
+  var MemesSchema = mongoose.Schema({
+    UserId: String,
+    VideoTitle: String,
+    MemeUrl: String
+  });
+  
   var Hypes = mongoose.model('Hypes', HypesSchema);
   var Videos = mongoose.model('Videos', VideosSchema);
-
+  var Memes = mongoose.model('Memes', MemesSchema);
+  
   // ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10'].forEach(function(n) {
   //   new Videos({
   //     VideoId: 'mrrobots01e' + n,
@@ -46,7 +53,6 @@ module.exports = function(mongoose) {
   // });
   
   // //prints out all the Hype records
-  // console.log("Saved new Hype entry to db");
   // Videos.find(function (err, v) {
   //   if (err) return console.error(err);
   //     console.log(v);
@@ -54,7 +60,8 @@ module.exports = function(mongoose) {
 
   return {
     Hypes: Hypes,
-    Videos: Videos
+    Videos: Videos,
+    Memes: Memes
   };
 };
 
