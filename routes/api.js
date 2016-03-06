@@ -4,9 +4,11 @@ var router = express.Router();
 module.exports = function(io){  
   /* GET users listing. */
   router.get('/hype', function(req, res, next) {
-    io.to('captureRoom').emit('captureRequest');
-    console.log("Emitted a captureRequest to captureRoom");
-        
+    
+    console.log("Emitting captureRequest to all sockets...")
+    io.emit('captureRequest', 'hi!');
+    console.log("Emitted a captureRequest to all sockets.");
+
     res.send({
         status: true
     });
