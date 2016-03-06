@@ -36,6 +36,19 @@ App.controller('DoodleController', ['$scope', '$window',  function($scope, $wind
         canvas.addEventListener("mouseout", function (e) {
             findxy('out', e)
         }, false);
+        
+        canvas.addEventListener("touchstart", function (e) {
+            findxy('down', e)
+        }, false);
+        canvas.addEventListener("touchend", function (e) {
+            findxy('up', e)
+        }, false);
+        canvas.addEventListener("touchcancel", function (e) {
+            findxy('out', e);
+        }, false);
+        canvas.addEventListener("touchmove", function (e) {
+            findxy('move', e)
+        }, false);
     }
 
     init();
@@ -70,6 +83,7 @@ App.controller('DoodleController', ['$scope', '$window',  function($scope, $wind
     }
 
     function findxy(res, e) {
+        e = e.changedTouches ? e.changedTouches[0] : e;
         var realPosition = getMousePos(canvas, e);
         var rect = canvas.getBoundingClientRect();
         if (res == 'down') {
