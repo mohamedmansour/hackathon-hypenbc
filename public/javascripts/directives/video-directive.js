@@ -31,6 +31,22 @@ App.directive('videoTimeUpdate', [function() {
         console.log('Emitted captureResponse: ', response);
     });
     
+    socket.on('watchRequest', function(data) {
+        console.log('Received a watch request with data: ', data);
+        watchVideo(data);
+    });
+    
+    watchVideo('warcraft');
+    
+    function watchVideo(video) {
+        if (video == 'warcraft') {
+            scope.watch('https://s3-us-west-2.amazonaws.com/zoo42/warcraft.mp4');
+        }
+        else {
+            scope.watch('https://s3-us-west-2.amazonaws.com/zoo42/mrrobots01e01.mp4');
+        }
+    }
+    
     function hypeMoment() {
         console.log("Capturing the video");
         var videoDuration = elt.duration;

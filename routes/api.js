@@ -182,7 +182,7 @@ module.exports = function(io, models) {
       db.download({container: 'img', remote: req.params.id}).pipe(res);
   });
   
-  /* GET users listing. */
+
   router.get('/hype', function(req, res, next) {
     var connectedClients = io.sockets.clients().connected;
     console.log("Connected Clients:");
@@ -201,6 +201,28 @@ module.exports = function(io, models) {
       res.send({
         status: true,
         message: "captureRequest sent to the client. Your capture image will be available soon!"
+      });
+    }
+  });
+  
+  router.get('/watch', function(req, res, next) {
+    var connectedClients = io.sockets.clients().connected;
+    console.log("Connected Clients:");
+    console.log(connectedClients);
+    
+    if (Object.keys(connectedClients).length === 0){
+      console.log("No connected clients!");
+      res.send({
+        status: false,
+        message: "No clients are connected. Watch a show dummy!"
+      });
+    } else {
+      console.log("Emitting watchRequest to all sockets...");
+      io.emit('watchRequest', req.query.video);
+      console.log("Emitted a watchRequest to all sockets.");
+      res.send({
+        status: true,
+        message: "watchRequest sent to the client. Your video will be available soon!"
       });
     }
   });
