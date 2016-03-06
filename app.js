@@ -19,6 +19,8 @@ app.io = io;
 io.on('connection', function(socket)
 {
     console.log('A user connected to socket: ' + socket);
+    console.log("Joining the captureRoom room");
+    socket.join('captureRoom');
 });
 
 

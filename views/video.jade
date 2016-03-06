@@ -1,0 +1,13 @@
+extends layout
+
+block content
+  h1= title
+  button(id="button")
+    span Capture to img
+  video(id="video", width='100%', controls)
+    source(src='/warcraft.mp4', type='video/mp4')
+    span Your browser does not support HTML5 Video
+  canvas(id="canvas", style="display:none;")
+  img(id="img")
+  script(type='text/javascript', src="/javascripts/socket.io.js")
+  script(type='text/javascript', src="/javascripts/getFrame.js")
