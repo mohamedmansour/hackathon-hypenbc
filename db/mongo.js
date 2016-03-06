@@ -35,6 +35,9 @@ mongodb.on('disconnected', function() {
     mongoose.connect(dbURI, {server:{auto_reconnect:true, socketOptions: { keepAlive: 1, connectTimeoutMS: 30000 }}, replset: { socketOptions: { keepAlive: 1, connectTimeoutMS : 30000 } }});
   });
 console.log('dbURI is: '+dbURI);
-mongoose.connect(dbURI, {server:{auto_reconnect:true}});
+
+if (process.env.NODE_ENV) {
+    mongoose.connect(dbURI, {server:{auto_reconnect:true}});
+}
 
 module.exports = mongoose;
