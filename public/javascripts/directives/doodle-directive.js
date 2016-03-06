@@ -12,3 +12,19 @@ App.directive('doodleFullscreen', ['$window', function($window) {
         link: link
     }
 }]);
+
+App.directive('doodleColor', [function() {
+
+    function link(scope, element, attrs) {
+        var elt = element[0];
+        elt.onclick = function() {
+            var style = window.getComputedStyle(elt,'');
+            var bgColor = style.getPropertyValue('background-color');
+            scope.color(bgColor);
+        };
+    }
+
+    return {
+        link: link
+    }
+}]);

@@ -2,9 +2,46 @@
     position: fixed;
     left: 0;
     right: 0;
-    top: 75px;
+    padding-top: 75px;
+    background-color: #333;
     height: 50px;
-    background: red;
+}
+
+#red {
+    background: #D90000;
+    height: 100%;
+    width: 16.66%;
+    display: inline-block;
+}
+#green {
+    background: #04756F;
+    height: 100%;
+    width: 16.66%;
+    display: inline-block;
+}
+#yellow {
+    background: #FFD500;
+    height: 100%;
+    width: 16.66%;
+    display: inline-block;
+}
+#orange {
+    background: #FF4600;
+    height: 100%;
+    width: 16.66%;
+    display: inline-block;
+}
+#blue {
+    background: #007CFF;
+    height: 100%;
+    width: 16.66%;
+    display: inline-block;
+}
+#purple {
+    background: #5C0C51;
+    height: 100%;
+    width: 16.66%;
+    display: inline-block;
 }
 
 #brushes {
@@ -16,11 +53,83 @@
     background: red;
 }
 
+#small {
+    position: fixed;
+    background: #FF5656;
+    border: 2px solid #E52020;
+    width: 10px;
+    height: 10px;
+    left: 30%;
+    border-radius: 50%;
+    bottom: 10px;
+}
+
+#medium {
+    position: fixed;
+    background: #FF5656;
+    border: 2px solid #E52020;
+    width: 15px;
+    height: 15px;
+    left: 35%;
+    border-radius: 50%;
+    bottom: 10px;
+}
+
+#large {
+    position: fixed;
+    background: #FF5656;
+    border: 2px solid #E52020;
+    width: 25px;
+    height: 25px;
+    left: 40%;
+    border-radius: 50%;
+    bottom: 10px;
+}
 #can {
     top: 125px;
     left: 0;
     right: 0;
     bottom: 0;
     position: fixed;
+}
+
+#text-btn {
     background: blue;
+    position:fixed;
+    right: 10%;
+    bottom: 0;
+    height: 50px;
+    width: 50px;
+}
+
+#text {
+    position: fixed;
+    bottom: 100px;
+    font-family: 'Impact';
+    color: #fff;
+    left: 10%;
+    right: 10%;
+    width: 80%;
+    text-transform: uppercase;
+    text-shadow: 2px 2px 0px #000;
+    -webkit-text-stroke: 1px black;
+    background:transparent;
+    visibility:hidden;
+    text-align:center;
+    line-height:1;
+    font-size:48px;
+}
+
+#remove-btn {
+    position:absolute;
+    bottom:23.5%;
+    left:9%;
+    background:#333;
+    color:#fff;
+    padding-left:8px;
+    padding-right:8px;
+    padding-top:2px;
+    padding-bottom:2px;
+    border-radius:10px;
+    visibility:hidden;
 }

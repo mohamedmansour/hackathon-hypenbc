@@ -1,12 +1,24 @@
 #title Doodle Moment
+
 #colors
-    #red.color
-    #green.color
-    #yellow.color
-    #blue.color
-#brushes
-    #small.brush
-    #medium.brush
-    #large.brush
+    #red.color(doodle)
+    #orange.color(doodle-color)
+    #yellow.color(doodle-color)
+    #green.color(doodle-color)
+    #blue.color(doodle-color)
+    #purple.color(doodle-color)
+    
 canvas#can(doodle-fullscreen) 
+
+input#text
+
+#remove-btn
+    span x
+
+#brushes
+    #small.brush(ng-click="brushBtn($this)")
+    #medium.brush(ng-click="brushBtn($this)")
+    #large.brush(ng-click="brushBtn($this)")
+    #text-btn(ng-click="textBtn()")
+
 
