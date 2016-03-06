@@ -73,7 +73,7 @@ App.controller('DoodleController', ['$scope', '$window', '$http', '$location',
       
       $http.post('/api/meme', memePost).success(function(data) {
          console.log('Succesfully posted meme. response: ', data);
-         window.location = data.imgUrl;
+         window.location = "/api/meme/" + data.memeId;
       });
       
     };
