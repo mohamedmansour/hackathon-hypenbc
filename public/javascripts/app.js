@@ -1,8 +1,8 @@
 
 var App = angular.
     module('hypeApp', ['ngRoute']).
-    config(['$routeProvider', function ($routeProvider) {
-
+    config(['$routeProvider','$locationProvider', function ($routeProvider, $locationProvider) {
+        $locationProvider.html5Mode(true);
         $routeProvider.
             when('/videos', {
                 templateUrl: 'partials/video-list.html',

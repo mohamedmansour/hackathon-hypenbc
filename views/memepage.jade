@@ -1,0 +1,21 @@
+extends layout
+
+block header
+    meta(name="twitter:card", content="photo")
+    meta(name="twitter:site", content="@nbcu")
+    meta(name="twitter:title", content="Mountain sunset")
+    meta(name="twitter:image", content="http://farm8.staticflickr.com/7334/11858349453_e3f18e5881_z.jpg")
+    meta(name="twitter:url", content="https://www.flickr.com/photos/reza-sina/11858349453/")
+
+block content
+  #main(ng-view)
+    #title Share Meme
+
+    #container-meme
+        a(href='/memes') Go Back
+        .meme-image(style='background-image:url(#{MemeUrl})')
+        a.twitter-share-button(href="https://twitter.com/share",data-url="{{tweetUrl}}") Tweet
+        
+    script(type='text/javascript').
+        !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');
+    

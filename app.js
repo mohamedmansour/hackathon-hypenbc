@@ -6,11 +6,11 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var socket_io = require('socket.io');
 
-var routes = require('./routes/index');
-var partials = require('./routes/partials');
-
 var mongoose = require('./db/mongo');
 var models = require('./db/models')(mongoose);
+
+var routes = require('./routes/index')(models);
+var partials = require('./routes/partials');
 
 var app = express();
 

@@ -1,20 +1,22 @@
 doctype html
 html(ng-app='hypeApp')
   head
+    base(href="/")
     title= Hype
     link(href='/favicon.ico', rel='icon', type='image/x-icon')
     link(rel='stylesheet', href='/stylesheets/style.css')
     link(rel='stylesheet', href='/stylesheets/doodle.css')
+    block header
   body(ng-controller='IndexController')
     #nav(scroll-collapse, ng-class="{collapse:boolChangeClass}")
        #left-nav
          img#menu(src='/images/menu.png', ng-click='showShelf = ! showShelf')
     div#shelf-wrapper(ng-class='{expanded:showShelf}', ng-click='showShelf = ! showShelf')
         ul#shelf
-            li: a.menutitle(href='#/') LOGO
-            li: a(href='#/memes') 🌀 Recent
-            li: a(href='#/tv') 📺 Tv
-            li: a(href='#/videos') ⚛ Hypes
+            li: a.menutitle(href='/') LOGO
+            li: a(href='/memes') 🌀 Recent
+            li: a(href='/tv') 📺 Tv
+            li: a(href='/videos') ⚛ Hypes
     block content
     script(src="/socket.io/socket.io.js")
     script(src='https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.js')
