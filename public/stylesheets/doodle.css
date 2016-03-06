@@ -50,13 +50,13 @@
     right: 0;
     bottom: 0;
     height: 50px;
-    background: red;
+    background: #dcdcdc;
 }
 
 #small {
     position: fixed;
-    background: #FF5656;
-    border: 2px solid #E52020;
+    background: #dcdcdc;
+    border: 2px solid #fff;
     width: 10px;
     height: 10px;
     left: 30%;
@@ -66,8 +66,8 @@
 
 #medium {
     position: fixed;
-    background: #FF5656;
-    border: 2px solid #E52020;
+    background: #dcdcdc;
+    border: 2px solid #fff;
     width: 15px;
     height: 15px;
     left: 35%;
@@ -77,8 +77,8 @@
 
 #large {
     position: fixed;
-    background: #FF5656;
-    border: 2px solid #E52020;
+    background: #dcdcdc;
+    border: 2px solid #fff;
     width: 25px;
     height: 25px;
     left: 40%;
@@ -94,7 +94,9 @@
 }
 
 #text-btn {
-    background: blue;
+    background: #CBC9C9;
+    padding-left: 10px;
+    padding-right: 10px;
     position:fixed;
     right: 10%;
     bottom: 0;

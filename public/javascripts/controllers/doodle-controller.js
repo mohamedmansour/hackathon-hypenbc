@@ -1,4 +1,4 @@
-App.controller('DoodleController', ['$scope',  function($scope) {
+App.controller('DoodleController', ['$scope', '$window',  function($scope, $window) {
     var canvas, ctx, flag = false,
         prevX = 0,
         currX = 0,
@@ -7,13 +7,13 @@ App.controller('DoodleController', ['$scope',  function($scope) {
         dot_flag = false;
 
     var x = "black",
-        y = 2;
+        y;
 
     function init() {
         canvas = can;
         ctx = canvas.getContext("2d");
-        canvas.width  = window.innerWidth;
-        canvas.height  = window.innerHeight * 0.75;
+        canvas.width  = $window.innerWidth;
+        canvas.height  = $window.innerHeight * 0.75;
         w = canvas.width;
         h = canvas.height;
 
@@ -113,6 +113,10 @@ App.controller('DoodleController', ['$scope',  function($scope) {
         text.style.visibility = 'visible';
         removeBtn.style.visibility = 'visible';
 
+
+        var xText = (canvas.width - text.width) / 2;
+        var yText = canvas.height - 100;
+        console.log(xText, yText);
         removeBtn.addEventListener('click', function(e){
             e.preventDefault();
             text.style.visibility = 'hidden';
@@ -126,9 +130,9 @@ App.controller('DoodleController', ['$scope',  function($scope) {
                 ctx.font = '40pt Impact';
                 ctx.fillStyle = '#fff';
                 ctx.strokeStyle='#000'
-                ctx.lineWidth=3;
-                ctx.fillText(memeText.toUpperCase(), 305, 355);
-                ctx.strokeText(memeText.toUpperCase(), 305, 355);
+                ctx.lineWidth= y;
+                ctx.fillText(memeText.toUpperCase(), xText, yText);
+                ctx.strokeText(memeText.toUpperCase(), xText, yText);
                 text.style.visibility = 'hidden';
                 removeBtn.style.visibility = 'hidden';
                 text.value= '';
@@ -136,25 +140,25 @@ App.controller('DoodleController', ['$scope',  function($scope) {
         })
     }
 
-    $scope.brushBtn = function(obj){
-        console.log(text);
-        if(true) {
-            document.addEventListener('keypress', function(e){
-                if (e.keyCode === 13){
-                    var memeText = text.value;
-                    ctx.font = '40pt Impact';
-                    ctx.fillStyle = '#fff';
-                    ctx.strokeStyle='#000'
-                    ctx.lineWidth=3;
-                    ctx.fillText(memeText.toUpperCase(), 305, 355);
-                    ctx.strokeText(memeText.toUpperCase(), 305, 355);
-                    text.style.visibility = 'hidden';
-                    removeBtn.style.visibility = 'hidden';
-                    text.value= '';
-                }
-            })
-        }
-    }
+
+    var small = document.getElementById('small');
+    var medium = document.getElementById('medium');
+    var large = document.getElementById('large');
+
+    small.addEventListener('click', function(e){
+        e.preventDefault();
+        y = 2;
+    });
+    medium.addEventListener('click', function(e){
+        e.preventDefault();
+        y = 8;
+    });
+    large.addEventListener('click', function(e){
+        e.preventDefault();
+        y = 16;
+    });
+
+
 
     function resizeCanvas(){
         init();
