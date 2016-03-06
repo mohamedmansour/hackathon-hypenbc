@@ -94,7 +94,7 @@ module.exports = function(io, models) {
       res.send({"_id":"56dc3cd6a6dcec520fd5e564","UserId":"1","VideoTitle":"warcraft","MemeUrl":"/api/image/meme__created_1457274070338__vid_warcraft.png","__v":0});
       return;
     }
-    models.Memes.find({_id: req.params.id}, function(err, meme){
+    models.Memes.findOne({_id: req.params.id}, function(err, meme){
       res.send(meme);
     });
   });
