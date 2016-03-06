@@ -164,7 +164,7 @@ App.controller('DoodleController', ['$scope', '$window', '$http', function($scop
                 ctx.font = '40pt Impact';
                 ctx.fillStyle = '#fff';
                 ctx.strokeStyle='#000'
-                ctx.lineWidth= y;
+                ctx.lineWidth= 2;
                 ctx.fillText(memeText.toUpperCase(), xText, yText);
                 ctx.strokeText(memeText.toUpperCase(), xText, yText);
                 text.style.visibility = 'hidden';
