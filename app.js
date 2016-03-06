@@ -8,7 +8,6 @@ var socket_io = require('socket.io');
 
 var routes = require('./routes/index');
 var partials = require('./routes/partials');
-var api = require('./routes/api');
 
 var app = express();
 
@@ -20,6 +19,8 @@ io.on('connection', function(socket)
 {
     console.log('A user connected to socket: ' + socket);
 });
+
+var api = require('./routes/api')(io);
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
