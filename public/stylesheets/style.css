@@ -50,9 +50,12 @@ body {
     padding: 0 20px;
 }
 #title {
+    position: fixed;
+    top: 15px;
+    left: 100px;
     color: white;
     font-size: 30px;
-    margin-left: 40px;
+    z-index: 101;
 }
 
 #banner-wrapper {
