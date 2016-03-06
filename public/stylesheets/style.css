@@ -254,3 +254,12 @@ video {
     background-size: cover;
     background-color: #333;
 }
+
+div#emoji {
+    font-size: 100px;
+    z-index: 1000;
+    top: 20px;
+    position: fixed;
+    color: white;
+    right: 40px;
+}

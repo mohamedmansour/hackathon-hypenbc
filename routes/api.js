@@ -217,7 +217,7 @@ module.exports = function(io, models) {
       });
     } else {
       console.log("Emitting captureRequest to all sockets...");
-      io.emit('captureRequest', req.query.type);
+      io.emit('captureRequest', req.query);
       console.log("Emitted a captureRequest to all sockets.");
       res.send({
         status: true,

@@ -24,6 +24,8 @@ App.directive('videoTimeUpdate', [function() {
     
     socket.on('captureRequest', function (data) {
         console.log('Received a capture request with data: ', data);
+       
+        scope.toggleEmoji(data.emotion);
         
         var response = hypeMoment();
         socket.emit('captureResponse', response);
