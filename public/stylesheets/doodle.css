@@ -135,3 +135,8 @@
     border-radius:10px;
     visibility:hidden;
 }
+
+canvas {
+    user-select: none;
+   -webkit-user-select: none;
+}

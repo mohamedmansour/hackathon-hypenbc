@@ -14,6 +14,9 @@
             .container-header
                h1 {{video.title}}
             .container-video
+                .container-progress-wrapper
+                    .progress-line
+                        .progress-item(ng-repeat="hype in video.hypes")
                 .container-frames-wrapper
                     ul.container-frames
                         li(ng-repeat="hype in video.hypes")

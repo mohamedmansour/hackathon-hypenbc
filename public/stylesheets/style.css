@@ -213,3 +213,24 @@ video {
 #shelf a:hover {
     background-color: #222;
 }
+
+.container-progress-wrapper {
+    height: 60px;
+}
+
+.progress-line {
+    position: relative;
+    height: 10px;
+    background-color: cornflowerblue;
+    top: 20px;
+    width: 80%;
+    left: 10%;
+}
+
+.progress-item {
+    height: inherit;
+    width: 5px;
+    position: absolute;
+    top: 0;
+    background-color: mediumpurple;
+}
