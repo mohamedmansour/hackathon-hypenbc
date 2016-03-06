@@ -85,7 +85,7 @@ module.exports = function(io, models) {
         return;
     }
     models.Memes.find(function(err, memes) {
-      res.send(memes);
+      res.send(memes.reverse());
     });
   });
   
@@ -192,7 +192,7 @@ module.exports = function(io, models) {
               timestamp: h.TimeCreated,
               timemark: Math.floor(h.HypePositionSeconds / 60).toString() +  ":" + Math.floor(h.HypePositionSeconds - Math.floor(h.HypePositionSeconds / 60) * 60).toString()
             })
-          })
+          }).reverse()
         });
       }));  
     });
