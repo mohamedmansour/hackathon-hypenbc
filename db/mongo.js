@@ -1,7 +1,7 @@
 var mongoose = require('mongoose');
 
 // local test uri (overwritten if prod vcap env var is found)
-var dbURI = 'mongodb://127.0.0.1:27017/' + 'test'; 
+var dbURI = 'mongodb://127.0.0.1:27017/' + 'test';
 if(process.env.VCAP_SERVICES) {
   var vcap_env = JSON.parse(process.env.VCAP_SERVICES);
   console.log(vcap_env);
