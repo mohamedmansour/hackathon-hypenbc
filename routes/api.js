@@ -123,12 +123,11 @@ module.exports = function(io, models) {
       UserId: '1',
       VideoTitle: videoTitle,
       MemeUrl: '/api/image/' + memeFileName
-    }).save(function (err, video) {
+    }).save(function (err, meme) {
       if (err) return console.error(err);
-      console.log(video);
+      console.log(meme);
+      res.send({success: true, imgUrl: '/api/image/' + memeFileName, memeId: meme._id});
     });
-    
-    res.send({success: true, imgUrl: '/api/image/' + memeFileName});
   });
   
   router.get('/videos', function(req, res, next) {
