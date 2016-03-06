@@ -3,11 +3,16 @@
     input#searchbox(ng-model='query', ng-show='showSearch', placeholder='Search for your movie or tv')
 #banner-wrapper
     #banner-overlay(scroll-fade)
-    #banner(style='background-image:url({{banner}})')
+    #banner(style='background-image:url({{videos[0].bannerImage}})')
 #container-wrapper(scroll-littlebit)
     ul#container-videos
         li(ng-repeat="video in videos | filter:query | orderBy:orderProp")
             .container-header
                h1 {{video.title}}
             .container-video
-                h1 Hello
+                .container-frames-wrapper
+                    ul.container-frames
+                        li(ng-repeat="hype in video.hypes")
+                            .hype-image(style='background-image:url({{hype.thumbnail}})')
+                            .hype-meta
+                                {{hype.timemark}}

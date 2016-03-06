@@ -99,3 +99,47 @@ body {
     background-color: white;
     min-height: 250px;
 }
+
+.container-frames-wrapper {
+    overflow-x: auto;
+    overflow-y: hidden;
+    height: 180px;
+}
+.container-frames {
+    list-style-type: none;
+    height: inherit;
+    width: 1000px;
+}
+.container-frames li {
+    display: inline-block;
+    margin-right: 10px;
+    height: inherit;
+}
+.hype-image {
+    width: 250px;
+    height: 150px;
+    background-size: cover;
+    background-position: top left;
+    background-color: #333;
+}
+
+.hype-meta {
+    margin-top: 5px;
+    font-size: 12px;
+}
+
+.container-frames-wrapper::-webkit-scrollbar
+{
+  width: 12px;  /* for vertical scrollbars */
+  height: 6px; /* for horizontal scrollbars */
+}
+
+.container-frames-wrapper::-webkit-scrollbar-track
+{
+  background: transparent;
+}
+
+.container-frames-wrapper::-webkit-scrollbar-thumb
+{
+  background: transparent;
+}
