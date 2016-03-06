@@ -23,15 +23,15 @@
     "mongoose": "^4.4.6",
     "morgan": "~1.6.1",
     "pkgcloud": "1.2.0-alpha.0",
+    "pkgcloud-bluemix-objectstorage": "2.0.0",
     "qs": "1.2.x",
     "request": "2.40.x",
     "s3-upload-stream": "~1.0.0",
     "serve-favicon": "~2.3.0",
+    "socket.io": "^1.4.5",
     "through2": "0.6.x",
     "underscore": "1.6.x",
     "url-join": "0.0.x",
-    "xml2js": "0.1.x",
-    "pkgcloud": "1.2.0-alpha.0",
-    "pkgcloud-bluemix-objectstorage": "2.0.0"
+    "xml2js": "0.1.x"
   }
 }
