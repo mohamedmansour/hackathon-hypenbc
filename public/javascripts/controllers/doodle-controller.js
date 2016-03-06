@@ -1,4 +1,5 @@
-App.controller('DoodleController', ['$scope', '$window', '$http', function($scope, $window, $http) {
+App.controller('DoodleController', ['$scope', '$window', '$http', '$location',
+ function($scope, $window, $http, $location) {
     var canvas, ctx, flag = false,
         prevX = 0,
         currX = 0,
@@ -25,7 +26,8 @@ App.controller('DoodleController', ['$scope', '$window', '$http', function($scop
         img.onload = function () {
             ctx.drawImage(img, 0, 0, w, h);
         }
-        img.src = "../../images/frames/frame1.png";
+        
+        img.src =  $location.search()['thumbnail'] || "../../images/frames/frame1.png";
 
         canvas.addEventListener("mousemove", function (e) {
             findxy('move', e)

@@ -120,6 +120,7 @@ body {
     height: inherit;
 }
 .hype-image {
+    display: block;
     width: 250px;
     height: 150px;
     background-size: cover;
