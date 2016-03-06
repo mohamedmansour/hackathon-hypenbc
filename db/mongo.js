@@ -36,6 +36,8 @@ mongodb.on('disconnected', function() {
   });
 console.log('dbURI is: '+dbURI);
 
+console.log('PROCESS [' + process.env.NODE_ENV + ']')
+
 if (process.env.NODE_ENV != 'dev') {
   console.log("Connecting to MongoDB");
   mongoose.connect(dbURI, {server:{auto_reconnect:true}});
