@@ -12,6 +12,12 @@ body {
     right: 0;
     z-index: 100;
     background-image: linear-gradient(rgba(0,0,0,0.5), transparent);
+    transition-property: background-color;
+    transition-duration: 0.4s;
+}
+
+#nav.collapse {
+    background-color: #333;
 }
 
 #left-nav {
@@ -49,27 +55,41 @@ body {
     margin-left: 40px;
 }
 
-#banner {
-    height: 300px;
-    padding-top: 75px;
-    background-repeat: no-repeat;
-    background-position: top left;
-    background-size: cover;
+#banner-wrapper {
     position: absolute;
+    height: 300px;
     top: 0;
     left: 0;
     right: 0;
     z-index: -1;
+}
+
+#banner-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: #333;
+    height: inherit;
+    opacity: 0;
+}
+
+#banner {
+    height: inherit;
+    background-repeat: no-repeat;
+    background-position: top left;
+    background-size: cover;
     background-color: #333;
 }
 
 #container-wrapper {
-    width: 760px;
-    margin: 250px auto 0 auto;
+    width: 80%;
+    margin: 200px auto 0 auto;
 }
 
 #container-videos {
     list-style-type: none;
+    padding: 0;
 }
 #container-videos li:first-child .container-header {
     color: white;

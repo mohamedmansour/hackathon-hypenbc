@@ -5,7 +5,7 @@ html(ng-app='hypeApp')
     link(href='/favicon.ico', rel='icon', type='image/x-icon')
     link(rel='stylesheet', href='/stylesheets/style.css')
   body
-    #nav
+    #nav(scroll-collapse, ng-class="{collapse:boolChangeClass}")
        #left-nav
          img#menu(src='/images/menu.png')
          span#title My TV
@@ -14,3 +14,4 @@ html(ng-app='hypeApp')
     script(src='https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular-route.min.js')
     script(src='/javascripts/app.js')
     script(src='/javascripts/controllers/video-list-controller.js')
+    script(src='/javascripts/directives/scroll-collapse-directive.js')
