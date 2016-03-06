@@ -15,7 +15,9 @@ body {
     transition-property: background-color;
     transition-duration: 0.4s;
 }
-
+#menu {
+    cursor: pointer;
+}
 #nav.collapse {
     background-color: #333;
 }
@@ -29,7 +31,6 @@ body {
    position: fixed;
    top: 0;
    right: 0;
-   left: 0;
    z-index: 101;
 }
 #search {
@@ -151,4 +152,64 @@ video {
 
 .container-frames-wrapper::-webkit-scrollbar-thumb {
   background: transparent;
+}
+
+#shelf-wrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,0.5);
+
+    transition: opacity 0.5s;
+    opacity: 0;
+}
+
+#shelf-wrapper.expanded {
+
+    opacity: 1;
+    z-index: 1000;
+}
+
+#shelf {
+    position: fixed;
+    top: 0;
+    left: -240px;
+    width: 200px;
+    background-color: #333;
+    bottom: 0;
+    margin: 0;
+    transition: left 0.5s;
+    list-style-type: none;
+    padding: 0;
+}
+
+#shelf-wrapper.expanded #shelf {
+    left: 0;
+}
+#shelf li {
+    border-bottom: 1px solid #222;
+}
+
+#shelf a {
+    height: 100px;
+    font-size: 30px;
+    color: white;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+    line-height: 100px;
+    padding-left: 30px;
+}
+
+#shelf a.menutitle {
+    height: 50px;
+    line-height: 50px;
+    font-size: 20px;
+    color: #000;
+}
+
+#shelf a:hover {
+    background-color: #222;
 }

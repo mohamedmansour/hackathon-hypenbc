@@ -5,15 +5,21 @@ html(ng-app='hypeApp')
     link(href='/favicon.ico', rel='icon', type='image/x-icon')
     link(rel='stylesheet', href='/stylesheets/style.css')
     link(rel='stylesheet', href='/stylesheets/doodle.css')
-  body
+  body(ng-controller='IndexController')
     #nav(scroll-collapse, ng-class="{collapse:boolChangeClass}")
        #left-nav
-         img#menu(src='/images/menu.png')
+         img#menu(src='/images/menu.png', ng-click='showShelf = ! showShelf')
+    div#shelf-wrapper(ng-class='{expanded:showShelf}', ng-click='showShelf = ! showShelf')
+        ul#shelf
+            li: a.menutitle(href='#/') LOGO
+            li: a(href='#/tv') 📺 Tv
+            li: a(href='#/videos') ⚛ Hypes
     block content
     script(src="/socket.io/socket.io.js")
     script(src='https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.js')
     script(src='https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular-route.js')
     script(src='/javascripts/app.js')
+    script(src='/javascripts/controllers/index-controller.js')
     script(src='/javascripts/controllers/video-list-controller.js')
     script(src='/javascripts/controllers/video-controller.js')
     script(src='/javascripts/controllers/doodle-controller.js')
