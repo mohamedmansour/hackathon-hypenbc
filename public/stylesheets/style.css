@@ -234,3 +234,22 @@ video {
     top: 0;
     background-color: mediumpurple;
 }
+
+#container-memes, #container-meme {
+    list-style-type: none;
+    width: 80%;
+    margin: 100px auto 0 auto;
+}
+
+#container-memes li {
+    margin-bottom: 10px;
+}
+
+.meme-image {
+    display: block;
+    height: 300px;
+    background-repeat: no-repeat;
+    background-position: top left;
+    background-size: cover;
+    background-color: #333;
+}
