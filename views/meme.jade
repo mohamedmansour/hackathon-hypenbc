@@ -4,7 +4,7 @@
     a(href='/memes') 
         img.icon(src='/images/goback.png')
         | Go Back
-    .meme-image(style='background-image:url({{meme.MemeUrl}})')
+    img.meme-image(src='{{meme.MemeUrl}}')
     a.twitter-share-button(href="https://twitter.com/share",data-url="{{tweetUrl}}")
         img.icon(src='/images/TwitterLogo.png')
         |Tweet
