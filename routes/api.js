@@ -1,7 +1,18 @@
 var express = require('express');
 var router = express.Router();
+var db = require('../db/bluemixdb.js');
+    
+// Authenticate to OpenStack
+db.auth(function(error) {
+    if (error) {
+        console.error("storageClient.auth() : error creating storage client: ", error); 
+    }
+    else {
+        console.log("connected to bluemix object storage");
+    }
+});
 
-module.exports = function(io){  
+module.exports = function(io) {  
   /* GET users listing. */
   router.get('/hype', function(req, res, next) {
     var connectedClients = io.sockets.clients().connected;
