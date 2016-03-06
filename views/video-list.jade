@@ -1,3 +1,11 @@
+#search-nav
+    img#search(src='/images/search.png', ng-click='showSearch = ! showSearch')
+    input#searchbox(ng-model='query', ng-show='showSearch', placeholder='Search for your movie or tv')
 #banner(style='background-image:url({{banner}})')
-
-h1 Hello Video List
+#container-wrapper
+    ul#container-videos
+        li(ng-repeat="video in videos | filter:query | orderBy:orderProp")
+            .container-header
+               h1 {{video.title}}
+            .container-video
+                h1 Hello
