@@ -19,7 +19,7 @@ db.auth(function(error) {
     }
 });
 
-module.exports = function(io, Hype) { 
+module.exports = function(io, models) { 
   io.on('connection', function(socket) {
     console.log('A user connected to socket: ' + socket);
     
@@ -51,65 +51,77 @@ module.exports = function(io, Hype) {
       readStream.pipe(writeStream);
       console.log("Done uploading image to blob storage");
       
-      console.log("Creating new Hype entry");
-      new Hype({
-        UserId: userId,
-        TimeCreated: timestamp,
-        HypeType: hypeType,
-        HypeStorageContainer: blobImageContainerName,
-        HypeFileName: newFileName,
-        HypePositionMilliseconds: data.videoElapsed,
-        TotalVideoDuration: data.videoDuration
-      }).save(function (err, testHype) {
-        if (err) return console.error(err);
+      console.log("Adding new Hype to video: " + data.videoTitle);
+      
+      models.Videos.update({VideoId: data.videoTitle},
+         {$push: { 'Hypes' : 
+            {
+              UserId: userId,
+              TimeCreated: timestamp,
+              HypeType: hypeType,
+              HypeStorageContainer: blobImageContainerName,
+              HypeFileName: newFileName,
+              HypePositionSeconds: data.videoElapsed,
+              TotalVideoDuration: data.videoDuration,
+              VideoId: data.videoTitle,
+            }
+         }
+         },{upsert:true}, function(err, data) { 
       });
+      
+      //prints out all the Hype records
       console.log("Saved new Hype entry to db");
+      console.log("Showing video where VideoId = " + data.videoTitle);
+      models.Videos.find({VideoId: data.videoTitle}, function (err, hype) {
+        if (err) return console.error(err);
+          console.log(hype);
+      })
     });
   });
   
+// {
+//           title: 'Mr Robot (2015)',
+//           subtitle: 'Season 1, Episode 5',
+//           bannerImage: '/images/banners/warcraft.png',
+//           runtime: 3600,
+//           hypes: [
+//               {
+//                   thumbnail: '/images/frames/frame1.png',
+//                   timestamp: '1:20',
+//                   timemark: '1:20'
+//               },
+//               {
+//                   thumbnail: '/images/frames/frame2.png',
+//                   timestamp: '5:20',
+//                   timemark: '5:20'
+//               },
+//               {
+//                   thumbnail: '/images/frames/frame3.png',
+//                   timestamp: '10:20',
+//                   timemark: '10:20'
+//               }
+//           ]
+//       }
+  
   router.get('/videos', function(req, res, next) {
-    res.send([
+    models.Videos.find(function(err, vids) {
+      res.send(vids.map(function(v){
+        return new Object(
         {
-            title: 'Warcraft (2016)',
-            bannerImage: '/images/banners/warcraft.png',
-            runtime: 7200,
-            hypes: [
-                {
-                    thumbnail: '/images/frames/frame1.png',
-                    timestamp: '1:20',
-                    timemark: '1:20'
-                },
-                {
-                    thumbnail: '/images/frames/frame3.png',
-                    timestamp: '3:20',
-                    timemark: '3:20'
-                }
-            ]
-        },
-        {
-            title: 'Mr Robot (2015)',
-            subtitle: 'Season 1, Episode 5',
-            bannerImage: '/images/banners/warcraft.png',
-            runtime: 3600,
-            hypes: [
-                {
-                    thumbnail: '/images/frames/frame1.png',
-                    timestamp: '1:20',
-                    timemark: '1:20'
-                },
-                {
-                    thumbnail: '/images/frames/frame2.png',
-                    timestamp: '5:20',
-                    timemark: '5:20'
-                },
-                {
-                    thumbnail: '/images/frames/frame3.png',
-                    timestamp: '10:20',
-                    timemark: '10:20'
-                }
-            ]
-        }
-    ]);    
+          title: v.VideoLong,
+          subtitle: v.Subtitle,
+          runtime: v.Runtime,
+          bannerImage: v.BannerUrl,
+          hypes: v.Hypes.map(function(h){
+            return new Object({
+              thumbnail: '/api/image/' + h.HypeFileName,
+              timestamp: h.TimeCreated,
+              timemark: Math.floor(h.HypePositionSeconds / 60).toString() +  ":" + Math.floor(h.HypePositionSeconds - (h.HypePositionSeconds / 60)).toString()
+            })
+          })
+        });
+      }));  
+    });
   });
   
 /* GET images from object storage. */

@@ -21,7 +21,6 @@ App.directive('videoTimeUpdate', [function() {
         .attr('height', elt.clientHeight)[0];
     var context = canvas.getContext('2d');
     var socket = io();
-    var videoTitle = elt.src.split('.')[0].replace('/','');
     
     socket.on('captureRequest', function (data) {
         console.log('Received a capture request with data: ', data);
@@ -39,6 +38,8 @@ App.directive('videoTimeUpdate', [function() {
 
         context.drawImage(elt, 0, 0, canvas.width, canvas.height);
         
+        var videoTitle = elt.src.substring(elt.src.lastIndexOf('/')+1).split('.')[0];
+        console.log(videoTitle);
         var imageBase64Data = canvas.toDataURL('image/jpeg', 0.5);
         
         return { 

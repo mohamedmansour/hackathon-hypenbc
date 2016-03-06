@@ -10,14 +10,14 @@ var routes = require('./routes/index');
 var partials = require('./routes/partials');
 
 var mongoose = require('./db/mongo');
-var Hype = require('./db/hype')(mongoose);
+var models = require('./db/models')(mongoose);
 
 var app = express();
 
 var io = socket_io();
 app.io = io;
 
-var api = require('./routes/api')(io, Hype);
+var api = require('./routes/api')(io, models);
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
