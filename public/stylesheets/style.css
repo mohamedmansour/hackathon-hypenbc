@@ -4,6 +4,12 @@ body {
     font-family: sans-serif;
     background-color: #eee;
 }
+
+a{
+    text-decoration: none;
+    color: #333;
+}
+
 #nav {
     height: 75px;
     position: fixed;
@@ -178,7 +184,7 @@ video {
     top: 0;
     left: -240px;
     width: 200px;
-    background-color: #333;
+    background-color: #fff;
     bottom: 0;
     margin: 0;
     transition: left 0.5s;
@@ -190,13 +196,13 @@ video {
     left: 0;
 }
 #shelf li {
-    border-bottom: 1px solid #222;
+    border-bottom: 1px solid #dcdcdc;
 }
 
 #shelf a {
     height: 100px;
-    font-size: 30px;
-    color: white;
+    font-size: 24px;
+    color: black;
     text-decoration: none;
     display: block;
     text-align: left;
@@ -212,7 +218,19 @@ video {
 }
 
 #shelf a:hover {
-    background-color: #222;
+    background-color: #dcdcdc;
+}
+
+#logo {
+    width: 87%;
+    padding-top: 7px;
+}
+
+.icon {
+    vertical-align: middle;
+    height: 22px;
+    padding-bottom: 5px;
+    padding-right: 10px;
 }
 
 .container-progress-wrapper {

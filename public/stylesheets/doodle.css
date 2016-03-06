@@ -56,19 +56,19 @@
 #small {
     width: 10px;
     height: 10px;
-    left: 30%;
+    left: 43%;
 }
 
 #medium {
     width: 15px;
     height: 15px;
-    left: 35%;
+    left: 47%;
 }
 
 #large {
     width: 25px;
     height: 25px;
-    left: 40%;
+    left: 51%;
 }
 
 .brush {
@@ -105,22 +105,21 @@
 #text {
     position: fixed;
     bottom: 100px;
+    font-family: 'Impact';
+    color: #fff;
     left: 10%;
     right: 10%;
     width: 80%;
-    color: #fff;
-    background:transparent;
-    visibility:hidden;
-    text-align:center;
-}
-.memeInput {
-    line-height:1;
-    font-family: 'Impact';
     text-transform: uppercase;
     text-shadow: 2px 2px 0px #000;
     -webkit-text-stroke: 1px black;
+    background:transparent;
+    visibility:hidden;
+    text-align:center;
+    line-height:1;
     font-size:48px;
 }
+
 #remove-btn {
     position:absolute;
     bottom:23.5%;
@@ -150,6 +149,4 @@ canvas {
     margin-left: 5px;
 }
 
-#hiddenInput {
-    display: inline;
-}
+@media screen

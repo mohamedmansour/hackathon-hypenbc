@@ -13,10 +13,17 @@ html(ng-app='hypeApp')
          img#menu(src='/images/menu.png', ng-click='showShelf = ! showShelf')
     div#shelf-wrapper(ng-class='{expanded:showShelf}', ng-click='showShelf = ! showShelf')
         ul#shelf
-            li: a.menutitle(href='/') LOGO
-            li: a(href='/memes') 🌀 Recent
-            li: a(href='/tv') 📺 Tv
-            li: a(href='/videos') ⚛ Hypes
+            li: a.menutitle(href='/')
+                img#logo(src='/images/logo2.png')
+            li: a(href='/memes')  
+                img.icon(src='/images/menu-icons/mymemesblack.png')
+                | My Memes
+            li: a(href='/tv')
+                img.icon(src='/images/menu-icons/mytvblack.png')
+                | My TV
+            li: a(href='/videos')
+                img.icon(src='/images/menu-icons/myhypesblack.png')
+                | My Hypes
     block content
     script(src="/socket.io/socket.io.js")
     script(src='https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.js')
